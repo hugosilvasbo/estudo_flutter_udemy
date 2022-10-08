@@ -1,26 +1,19 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
     title: 'Frases do dia',
     home: Container(
-      color: Colors.white,
-      child: Column(
-        children: <Widget>[
-          TextButton(
-            onPressed: () {
-              print("Botão pressionado!");
-            },
-            child: const Text(
-              "Botão",
-              style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                  decoration: TextDecoration.none),
-            ),
-          )
+      margin: const EdgeInsets.only(top: 40),
+      decoration:
+          BoxDecoration(border: Border.all(width: 3, color: Colors.white)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: const <Widget>[
+          Text('t1'),
+          Text('t2'),
+          Text('t3'),
         ],
       ),
     ),
