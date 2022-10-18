@@ -10,14 +10,12 @@ class Jogo extends StatefulWidget {
 
 class JogoState extends State<Jogo> {
   var _imagemApp = AssetImage("images/padrao.png");
+  var _mensagem = "Escolha uma opção abaixo";
 
   void _opcaoSelecionada(String escolhaUsuario) {
     var opcoes = ["pedra", "papel", "tesoura"];
     var numero = Random().nextInt(3);
     var escolhaApp = opcoes[numero];
-
-    print("Escolha do App: " + escolhaApp);
-    print("Escolha do usuario: " + escolhaUsuario);
 
     //Exibição da imagem escolhida pelo App
     switch (escolhaApp) {
@@ -39,6 +37,24 @@ class JogoState extends State<Jogo> {
     }
 
     //Validação do ganhador
+    //Usuário ganhador
+    if ((escolhaUsuario == "pedra" && escolhaApp == "tesoura") ||
+        (escolhaUsuario == "tesoura" && escolhaApp == "papel") ||
+        (escolhaUsuario == "papel" && escolhaApp == "pedra")) {
+      setState(() {
+        this._mensagem = "Parabéns!!! Você ganhou!";
+      });
+    }
+    //App ganhador
+    else if ((escolhaApp == "pedra" && escolhaUsuario == "tesoura") ||
+        (escolhaApp == "tesoura" && escolhaUsuario == "papel") ||
+        (escolhaApp == "papel" && escolhaUsuario == "pedra")) {
+      this._mensagem = "Você perdeu! :(";
+    }
+    //Empate
+    else {
+      this._mensagem = "Empatamos! :)";
+    }
   }
 
   @override
@@ -59,10 +75,10 @@ class JogoState extends State<Jogo> {
             ),
           ),
           Image(image: _imagemApp),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(top: 32, bottom: 16),
             child: Text(
-              "Escolha uma opção abaixo",
+              this._mensagem,
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
