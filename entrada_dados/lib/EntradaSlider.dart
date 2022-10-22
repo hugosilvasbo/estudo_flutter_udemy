@@ -9,6 +9,7 @@ class EntradaSlider extends StatefulWidget {
 
 class _EntradaSliderState extends State<EntradaSlider> {
   double _valor = 5;
+  String _label = "Valor selecionado";
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +25,14 @@ class _EntradaSliderState extends State<EntradaSlider> {
               value: _valor,
               min: 0,
               max: 10,
-              label: "Valor selecionado",
+              label: _label,
               divisions: 10,
+              activeColor: Colors.red,
+              inactiveColor: Colors.purple,
               onChanged: (double novoValor) {
                 setState(() {
                   _valor = novoValor;
+                  _label = "Valor selecionado " + novoValor.toString();
                 });
               },
             ),
@@ -37,7 +41,9 @@ class _EntradaSliderState extends State<EntradaSlider> {
                 "Salvar",
                 style: TextStyle(fontSize: 20),
               ),
-              onPressed: () {},
+              onPressed: () {
+                print("Valor selecionado : " + _valor.toString());
+              },
             ),
           ],
         ),
