@@ -20,6 +20,7 @@ class _TelaServicoState extends State<TelaServico> {
         child: Container(
           padding: EdgeInsets.all(16),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 children: [
@@ -37,7 +38,15 @@ class _TelaServicoState extends State<TelaServico> {
               ),
               Padding(
                 padding: EdgeInsets.only(top: 16),
-                child: Text("Serviço de ti, manutenção, instalação etc."),
+                child: Text("Consultoria"),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 16),
+                child: Text("Cálculo de preços"),
+              ),
+              Padding(
+                padding: EdgeInsets.only(top: 16),
+                child: Text("Acompanhamento de projetos"),
               ),
             ],
           ),
