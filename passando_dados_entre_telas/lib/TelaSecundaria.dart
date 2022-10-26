@@ -23,7 +23,13 @@ class _TelaSecundariaState extends State<TelaSecundaria> {
         child: Column(
           children: [
             // para recuperar os atributos da tela acima, basta usar widget
-            Text("Valor passado: ${widget.nome}"),
+            Text("Ir para a primeira tela"),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.pushNamed(context, "/");
+              },
+              child: Text("Ir para a primeira tela"),
+            ),
           ],
         ),
       ),
