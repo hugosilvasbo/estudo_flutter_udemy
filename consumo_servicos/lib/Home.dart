@@ -13,12 +13,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
+  TextEditingController _cepController = TextEditingController();
   String _resultado = "Resultado";
 
   //Comunicação síncrona e assincrona
   void _recuperarCep() async {
-    String cep = "13457040";
-    String url = "https://viacep.com.br/ws/${cep}/json/";
+    String cepDigitado = _cepController.text;
+    String url = "https://viacep.com.br/ws/${cepDigitado}/json/";
 
     http.Response response;
     response = await http.get(url);
@@ -56,7 +57,7 @@ class _HomeState extends State<Home> {
               style: TextStyle(
                 fontSize: 20,
               ),
-              controller: ,
+              controller: _cepController,
             ),
             ElevatedButton(
               onPressed: _recuperarCep,
