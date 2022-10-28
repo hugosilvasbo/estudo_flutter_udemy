@@ -8,7 +8,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   List _itens = [];
 
   void _carregarItens() {
@@ -41,6 +40,42 @@ class _HomeState extends State<Home> {
             Map<String, dynamic> item = _itens[index];
 
             return ListTile(
+              onTap: () {
+                //print("Clique com onTap ${index}");
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: Text(item["titulo"]),
+                      titlePadding: EdgeInsets.all(20),
+                      titleTextStyle: TextStyle(
+                        fontSize: 20,
+                        color: Colors.orange,
+                      ),
+                      content: Text(item["descricao"]),
+                      backgroundColor: Colors.white,
+                      actions: [
+                        ElevatedButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: Text("Sim"),
+                        ),
+                        ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: Text("Não"),
+                        ),
+                      ],
+                      //contentPadding: EdgeInsets.all(80),
+                    );
+                  },
+                );
+              },
+              /*onLongPress: () {
+                print("Clique com onLongPress");
+              },*/
               title: Text(item["titulo"]),
               subtitle: Text(item["descricao"]),
             );
