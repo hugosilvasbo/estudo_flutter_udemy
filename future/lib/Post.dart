@@ -1,10 +1,19 @@
 class Post {
   int _userId;
-  int _id ;
+  int _id;
   String _title;
   String _body;
 
   Post(this._userId, this._id, this._title, this._body);
+
+  Map toJson() {
+    return {
+      "userId": this.userId,
+      "id": this.id,
+      "title": this.title,
+      "body": this.body
+    };
+  }
 
   String get body => _body;
 
