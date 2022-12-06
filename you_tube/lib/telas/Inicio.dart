@@ -3,20 +3,24 @@ import 'package:you_tube/Api.dart';
 import 'package:you_tube/models/Video.dart';
 
 class Inicio extends StatefulWidget {
+  String pesquisa = "";
+
+  Inicio(this.pesquisa);
+
   @override
   State<Inicio> createState() => _InicioState();
 }
 
 class _InicioState extends State<Inicio> {
-  _listarVIdeos() {
+  _listarVIdeos(String pesquisa) {
     Api api = Api();
-    return api.pesquisar("");
+    return api.pesquisar(pesquisa);
   }
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Video>>(
-      future: _listarVIdeos(),
+      future: _listarVIdeos(widget.pesquisa),
       builder: (context, snapshot) {
         switch (snapshot.connectionState) {
           case ConnectionState.none:

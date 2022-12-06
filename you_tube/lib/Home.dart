@@ -4,6 +4,8 @@ import 'package:you_tube/telas/EmAlta.dart';
 import 'package:you_tube/telas/Inicio.dart';
 import 'package:you_tube/telas/Inscricao.dart';
 
+import 'CustomSearchDelegate.dart';
+
 class Home extends StatefulWidget {
   @override
   State<Home> createState() => _HomeState();
@@ -11,30 +13,41 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _indiceAtual = 0;
+  String _resultado = "";
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> telas = [Inicio(), EmAlta(), Inscricao(), Biblioteca()];
+    List<Widget> telas = [
+      Inicio(_resultado),
+      EmAlta(),
+      Inscricao(),
+      Biblioteca()
+    ];
 
     return Scaffold(
       appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Colors.grey,
-        ),
-        backgroundColor: Colors.white,
-        title: Image.asset(
-          "imagens/youtube.png",
-          width: 98,
-          height: 22,
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              print("acao: search");
-            },
-            icon: Icon(Icons.search),
-          )
-          /*IconButton(
+          iconTheme: IconThemeData(
+            color: Colors.grey,
+          ),
+          backgroundColor: Colors.white,
+          title: Image.asset(
+            "imagens/youtube.png",
+            width: 98,
+            height: 22,
+          ),
+          actions: [
+            IconButton(
+              onPressed: () async {
+                String? res = await showSearch(
+                    context: context, delegate: CustomSearchDelegate());
+                setState(() {
+                  _resultado = res!;
+                });
+                print("Resultado aqui fora digitado: " + res!);
+              },
+              icon: Icon(Icons.search),
+            )
+            /*IconButton(
             onPressed: () {
               print("acao: videocam");
             },
@@ -47,8 +60,7 @@ class _HomeState extends State<Home> {
             icon: Icon(Icons.account_circle),
           ),
         ],*/
-        ]
-      ),
+          ]),
       body: Container(
         padding: EdgeInsets.all(16),
         child: telas[_indiceAtual],
