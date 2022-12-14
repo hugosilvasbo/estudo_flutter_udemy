@@ -1,0 +1,27 @@
+-> abrir o projeto
+code .
+
+-> ctrl shif p 
+abre as config do vs code
+  dps filtrar emulador
+
+-> flutter create nomedoprojeto
+criar o projeto
+
+-> flutter devices
+-> flutter emulators --launch Nexus_6_API_28
+
+-> flutter run -d nomedoavd
+
+-> para instalar os bagulho
+flutter pub add http
+
+-> run without no-safety
+flutter run --no-sound-null-safety
+https://www.fluttercampus.com/guide/108/how-to-solve-cannot-run-without-sound-null-safety-error-in-flutter-app/
+
+
+
+--> executar no youtube
+dart --no-sound-null-safety run
+flutter run --no-sound-null-safety
