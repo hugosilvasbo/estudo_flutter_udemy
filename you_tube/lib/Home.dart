@@ -14,7 +14,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _indiceAtual = 0;
   String _resultado = "";
-
+  
   @override
   Widget build(BuildContext context) {
     List<Widget> telas = [
