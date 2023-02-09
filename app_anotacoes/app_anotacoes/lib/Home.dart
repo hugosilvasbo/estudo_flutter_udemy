@@ -125,6 +125,12 @@ class _HomeState extends State<Home> {
     return dataFormatada;
   }
 
+  _removerAnotacao(int id) async {
+    await _db.removerAnotacao(id);
+
+    _recuperarAnotacoes();
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -170,7 +176,9 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            _removerAnotacao(anotacao.id);
+                          },
                           child: Padding(
                             padding: EdgeInsets.only(right: 0),
                             child: Icon(
